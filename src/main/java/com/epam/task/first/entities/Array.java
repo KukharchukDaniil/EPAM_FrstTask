@@ -5,16 +5,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class Array {
-    private final List<Double> elements;
-    public Array(Double... elements){
+    private final List<Integer> elements;
+    public Array(Integer... elements){
         this.elements = Arrays.asList(elements);
     }
 
-    public Array(List<Double> elements) {
+    public Array(List<Integer> elements) {
         this.elements = elements;
     }
 
-    public List<Double> getElements() {
+    public List<Integer> getElements() {
         return elements;
     }
 

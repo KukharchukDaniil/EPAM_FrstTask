@@ -8,11 +8,11 @@ import java.util.function.Predicate;
 
 public class ArrayLogic{
 
-    public Double findMax(Array array)  {
+    public Integer findMax(Array array)  {
         
-        List<Double> elements = array.getElements();
-        Double max = elements.get(0);
-        for (Double element : elements) {
+        List<Integer> elements = array.getElements();
+        Integer max = elements.get(0);
+        for (Integer element : elements) {
             if(max < element){
                 max = element;
             }
@@ -20,11 +20,11 @@ public class ArrayLogic{
         return max;
     }
 
-    public Double findMin(Array array)  {
+    public Integer findMin(Array array)  {
         
-        List<Double> elements = array.getElements();
-        Double min = elements.get(0);
-        for (Double element : elements) {
+        List<Integer> elements = array.getElements();
+        Integer min = elements.get(0);
+        for (Integer element : elements) {
             if(min > element){
                 min = element;
             }
@@ -34,16 +34,16 @@ public class ArrayLogic{
 
     public Double getAverage(Array array)  {
         
-        List<Double> elements = array.getElements();
-        Double sum = getSum(array);
+        List<Integer> elements = array.getElements();
+        Double sum = Double.valueOf(getSum(array));
         return sum/elements.size();
     }
 
-    public Double getSum(Array array)  {
-        
-        Double sum = 0.0;
-        List<Double> elements = array.getElements();
-        for (Double element : elements) {
+    public Integer getSum(Array array)  {
+
+        Integer sum = 0;
+        List<Integer> elements = array.getElements();
+        for (Integer element : elements) {
             sum+=element;
         }
         return sum;
@@ -52,8 +52,8 @@ public class ArrayLogic{
     public Integer countPositive(Array array)  {
         
         Integer counter = 0;
-        List<Double> elements = array.getElements();
-        for (Double element : elements) {
+        List<Integer> elements = array.getElements();
+        for (Integer element : elements) {
             if(element > 0){
                 counter++;
             }
@@ -64,8 +64,8 @@ public class ArrayLogic{
     public Integer countNegative(Array array)  {
         
         Integer counter = 0;
-        List<Double> elements = array.getElements();
-        for (Double element : elements) {
+        List<Integer> elements = array.getElements();
+        for (Integer element : elements) {
             if(element < 0){
                 counter++;
             }
@@ -74,11 +74,11 @@ public class ArrayLogic{
     }
 
 
-    public Array replaceIf(Array array, Predicate<Double> predicate, Double replaceValue)  {
+    public Array replaceIf(Array array, Predicate<Integer> predicate, Integer replaceValue)  {
         
-        List<Double> elements = array.getElements();
-        List<Double> result = new ArrayList<>();
-        for (Double element : elements) {
+        List<Integer> elements = array.getElements();
+        List<Integer> result = new ArrayList<>();
+        for (Integer element : elements) {
             if (predicate.test(element)) {
                 result.add(replaceValue);
             } else {

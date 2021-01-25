@@ -7,8 +7,8 @@ import java.util.List;
 public class ArrayConsolePrinter implements ArrayPrinter {
 
     public void view(Array array) {
-        List<Double> elements = array.getElements();
-        for (Double element : elements) {
+        List<Integer> elements = array.getElements();
+        for (Integer element : elements) {
             System.out.println(element);
         }
     }
