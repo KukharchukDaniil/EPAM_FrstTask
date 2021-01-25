@@ -7,40 +7,14 @@ import org.junit.jupiter.api.Test;
 import java.util.function.Predicate;
 
 public class ArrayLogicTest {
-    private ArrayLogic arrayLogic = new ArrayLogic();
-    Predicate<Double> predicate =  new Predicate<Double>() {
+    private final ArrayLogic arrayLogic = new ArrayLogic();
+    Predicate<Double> condition =  new Predicate<Double>() {
         @Override
         public boolean test(Double value) {
             return value%2==0.0;
         }
     };
 
-    @Test
-    public void testCheckArrayWhenArrayIsEmpty()
-    {
-        //given
-        Array array = new Array();
-
-        //when
-        //...
-
-        //than
-        Assert.assertFalse(arrayLogic.checkArray(array));
-
-    }
-    @Test
-    public void testCheckArrayWhenArrayIsNotEmpty()
-    {
-        //given
-        Array array = new Array(120.0);
-
-        //when
-        //...
-
-        //than
-        Assert.assertTrue(arrayLogic.checkArray(array));
-
-    }
 
     @Test
     public void testGetSumWhenPositiveNumbersApplied()
@@ -66,7 +40,7 @@ public class ArrayLogicTest {
         Double actual = arrayLogic.getSum(array);
 
         //than
-        Assert.assertEquals(-21.6,actual);
+        Assert.assertEquals(-21.6,actual,0.00001);
 
     }
 
@@ -80,7 +54,7 @@ public class ArrayLogicTest {
         Double actual = arrayLogic.getSum(array);
 
         //than
-        Assert.assertEquals(-3.0,actual);
+        Assert.assertEquals(-3.0,actual,0.00001);
 
     }
 
@@ -94,7 +68,7 @@ public class ArrayLogicTest {
         Double actual = arrayLogic.findMax(array);
 
         //than
-        Assert.assertEquals(12.5,actual);
+        Assert.assertEquals(12.5,actual,0.00001);
 
     }
 
@@ -108,7 +82,7 @@ public class ArrayLogicTest {
         Double actual = arrayLogic.findMax(array);
 
         //than
-        Assert.assertEquals(-2.0,actual);
+        Assert.assertEquals(-2.0,actual,0.00001);
 
     }
 
@@ -122,7 +96,7 @@ public class ArrayLogicTest {
         Double actual = arrayLogic.findMax(array);
 
         //than
-        Assert.assertEquals(7.1,actual);
+        Assert.assertEquals(7.1,actual,0.00001);
 
     }
 
@@ -136,7 +110,7 @@ public class ArrayLogicTest {
         Double actual = arrayLogic.findMin(array);
 
         //than
-        Assert.assertEquals(2.0,actual);
+        Assert.assertEquals(2.0,actual,0.00001);
 
     }
 
@@ -150,7 +124,7 @@ public class ArrayLogicTest {
         Double actual = arrayLogic.findMin(array);
 
         //than
-        Assert.assertEquals(-12.5,actual);
+        Assert.assertEquals(-12.5,actual,0.00001);
 
     }
 
@@ -164,49 +138,49 @@ public class ArrayLogicTest {
         Double actual = arrayLogic.findMin(array);
 
         //than
-        Assert.assertEquals(-12.5,actual);
+        Assert.assertEquals(-12.5,actual,0.00001);
 
     }
 
     @Test
-    public void testFindMeanWhenPositiveNumbersApplied()
+    public void testFindAverageWhenPositiveNumbersApplied()
     {
         //given
         Array array = new Array(2.0,0.5,0.5);
 
         //when
-        Double actual = arrayLogic.findMean(array);
+        Double actual = arrayLogic.getAverage(array);
 
         //than
-        Assert.assertEquals(1.0,actual);
+        Assert.assertEquals(1.0,actual,0.00001);
 
     }
 
     @Test
-    public void testFindMeanWhenNegativeNumbersApplied()
+    public void testFindAverageWhenNegativeNumbersApplied()
     {
         //given
         Array array = new Array(-2.0,-0.5,-0.5);
 
         //when
-        Double actual = arrayLogic.findMean(array);
+        Double actual = arrayLogic.getAverage(array);
 
         //than
-        Assert.assertEquals(-1.0,actual);
+        Assert.assertEquals(-1.0,actual,0.00001);
 
     }
 
     @Test
-    public void testFindMeanWhenBothNegativeAndPositiveNumbersApplied()
+    public void testFindAverageWhenBothNegativeAndPositiveNumbersApplied()
     {
         //given
         Array array = new Array(-3.0,0.5,-0.5);
 
         //when
-        Double actual = arrayLogic.findMean(array);
+        Double actual = arrayLogic.getAverage(array);
 
         //than
-        Assert.assertEquals(-1.0,actual);
+        Assert.assertEquals(-1.0,actual,0.00001);
 
     }
 
@@ -298,11 +272,11 @@ public class ArrayLogicTest {
         Array array = new Array(14.0,124.0,0.0, 0.0);
 
         //when
-        arrayLogic.replaceIf(array,predicate, 512.0);
+        Array actual = arrayLogic.replaceIf(array,condition, 512.0);
 
         //than
+        Assert.assertEquals(new Array(512.0,512.0,512.0, 512.0),actual);
 
-        Assert.assertEquals(new Array(512.0,512.0,512.0, 512.0),array);
     }
 
     @Test
@@ -312,10 +286,10 @@ public class ArrayLogicTest {
         Array array = new Array(15.0,123.0,1.0, 1.0);
 
         //when
-        arrayLogic.replaceIf(array,predicate, 512.0);
+        Array actual = arrayLogic.replaceIf(array,condition, 512.0);
 
         //than
-        Assert.assertEquals(new Array(15.0,123.0,1.0, 1.0),array);
+        Assert.assertEquals(new Array(15.0,123.0,1.0, 1.0),actual);
 
     }
 
@@ -326,10 +300,10 @@ public class ArrayLogicTest {
         Array array = new Array(15.0,124.0,1.0, 1.0);
 
         //when
-        arrayLogic.replaceIf(array,predicate, 512.0);
+        Array actual = arrayLogic.replaceIf(array,condition, 512.0);
 
         //than
-        Assert.assertEquals(new Array(15.0,512.0,1.0, 1.0),array);
+        Assert.assertEquals(new Array(15.0,512.0,1.0, 1.0),actual);
 
     }
 
